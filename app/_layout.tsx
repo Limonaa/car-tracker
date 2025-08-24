@@ -1,6 +1,16 @@
+import React from 'react';
 import { Stack } from "expo-router";
-import "@/global.css"
+import './globals.css';
+import { View } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
-export default function RootLayout() {
-  return <Stack />;
-}
+const RootLayout = () => {
+    return (
+        <View className="flex-1 bg-white">
+            <StatusBar style={"dark"} />
+            <Stack screenOptions={{ headerShown: false }} />
+        </View>
+    );
+};
+
+export default RootLayout;
