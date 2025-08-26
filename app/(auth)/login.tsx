@@ -2,12 +2,12 @@ import {useState} from 'react';
 import {View, Text, Alert} from 'react-native';
 import {Link, Redirect} from 'expo-router';
 import {supabase} from '@/lib/supabase';
-import {useAuth} from '@/hooks/useAuth';
 import Input from '@/components/Input';
 import Button from '@/components/Button';
+import {useAuthStore} from "@/lib/authStore";
 
 export default function SignIn() {
-    const {user} = useAuth();
+    const user = useAuthStore((s) => s.user);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 

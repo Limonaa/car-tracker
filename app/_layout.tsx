@@ -1,16 +1,21 @@
-import React from 'react';
-import { Stack } from "expo-router";
-import './globals.css';
-import { View } from "react-native";
-import { StatusBar } from "expo-status-bar";
+import {Stack} from "expo-router";
+import {useEffect} from "react";
+import {useAuthStore} from "@/lib/authStore";
+import {supabase} from "@/lib/supabase";
+import "./globals.css";
 
-const RootLayout = () => {
-    return (
-        <View className="flex-1 bg-white">
-            <StatusBar style={"dark"} />
-            <Stack screenOptions={{ headerShown: false }} />
-        </View>
-    );
-};
+export default function RootLayout() {
+    const setSession = useAuthStore((s) => s.setSession);
 
-export default RootLayout;
+    useEffect(() => {
+        supabase.auth.getSession().then(({data}) => setSession(data.session));
+
+        const {data: sub} = supabase.auth.onAuthStateChange((_e, s) => {
+            setSession(s);
+        });
+
+        return () => sub.subscription.unsubscribe();
+    }, []);
+
+    return <Stack screenOptions={{headerShown: false}}/>;
+}

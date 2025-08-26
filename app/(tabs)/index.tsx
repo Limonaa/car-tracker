@@ -1,13 +1,14 @@
 import React from 'react';
 import {FlatList, Text, View} from "react-native";
-import {useAuth} from "@/hooks/useAuth";
 import {useVehicles} from "@/hooks/useVehicles";
 import Button from "@/components/Button";
 import {useUI} from "@/lib/store";
 import {Link} from "expo-router";
+import {useAuthStore} from "@/lib/authStore";
 
 export default function Dashboard() {
-    const {user} = useAuth();
+    const user = useAuthStore((s) => s.user);
+
     const {vehicles} = useVehicles(user?.id);
     const {selectedVehicleId, setSelectedVehicleId} = useUI();
 

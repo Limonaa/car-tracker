@@ -1,13 +1,13 @@
 import Input from "@/components/Input";
 import Button from "@/components/Button";
-import {useAuth} from "@/hooks/useAuth";
 import {useState} from "react";
 import {supabase} from "@/lib/supabase";
 import {router} from "expo-router";
 import {View} from "react-native";
+import {useAuthStore} from "@/lib/authStore";
 
 export default function NewVehicle() {
-    const {user} = useAuth();
+    const user = useAuthStore((s) => s.user);
     const [name, setName] = useState("");
     const [make, setMake] = useState("");
     const [model, setModel] = useState("");
