@@ -6,6 +6,7 @@ import {useUI} from "@/lib/store";
 import {Link} from "expo-router";
 import {useAuthStore} from "@/lib/authStore";
 import VehicleCard from "@/components/VehicleCard";
+import ExpenseItem from "@/components/ExpenseItem";
 
 export default function Dashboard() {
     const user = useAuthStore((s) => s.user);
@@ -30,7 +31,7 @@ export default function Dashboard() {
                 />
             </View>
             <Text className={"text-2xl font-semibold"}>Upcoming expenses</Text>
-
+            <ExpenseItem value={64.58} type={"fuel"} date={"2025-08-25"} mode={"past"}/>
         </View>
     )
 }
