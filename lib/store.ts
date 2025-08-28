@@ -1,7 +1,7 @@
-import { create } from 'zustand';
-import { Expense, Vehicle } from './types';
+import {create} from 'zustand';
+import {Expense, Vehicle} from './types';
 
-type UIState= {
+type UIState = {
     loading: boolean;
     setLoading: (v: boolean) => void;
     selectedVehicleId?: string;
@@ -14,12 +14,12 @@ type UIState= {
 
 export const useUI = create<UIState>((set) => ({
     loading: false,
-    setLoading: (v) => set({ loading: v }),
-    selectedVehicleId: undefined,
-    setSelectedVehicleId: (id) => set({ selectedVehicleId: id }),
+    setLoading: (v) => set({loading: v}),
+    selectedVehicleId: "686bd2ff-0c57-4c5f-b9d8-200dacdf765a", //TODO: Change to undefined
+    setSelectedVehicleId: (id) => set({selectedVehicleId: id}),
     vehicles: [],
-    setVehicles: (vehicles) => set({ vehicles }),
+    setVehicles: (vehicles) => set({vehicles}),
     expensesByVehicle: {},
-    setExpenses: (vehicleId, items) => set((s) => ({ ...s.expensesByVehicle, [vehicleId]: items })),
+    setExpenses: (vehicleId, items) => set((s) => ({...s.expensesByVehicle, [vehicleId]: items})),
 
 }))
