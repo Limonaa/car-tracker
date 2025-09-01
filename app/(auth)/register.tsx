@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {View, Text, Alert} from 'react-native';
 import {Link, Redirect} from 'expo-router';
 import {supabase} from '@/lib/supabase';
@@ -26,16 +26,20 @@ export default function SignUp() {
     }
 
     return (
-        <View className="flex-1 p-6 gap-4 justify-center">
-            <Text className="text-3xl font-bold">Register</Text>
+        <View className={"flex-1 justify-center px-4 gap-4 bg-white w-full"}>
+            <Text className={"text-3xl font-semibold text-center"}>Register</Text>
             <Input placeholder="Name" value={name} onChangeText={setName}/>
             <Input placeholder="Email" keyboardType="email-address" autoCapitalize="none"
                    value={email} onChangeText={setEmail}/>
             <Input placeholder="Password" secureTextEntry value={password} onChangeText={setPassword}/>
-            <Button title="Sign Up" onPress={signUp}/>
-            <Link href="/(auth)/login" className="text-gray-600 text-center mt-4">
-                Already have an account? Login
-            </Link>
+            <Button title="Register" onPress={signUp} textClassName={"text-lg"}/>
+            <View className={"flex-row justify-center align-middle mt-4"}>
+                <Text className={"text-gray-600 text-center "}>Already have an account? </Text>
+                <Link href="/(auth)/login" className="text-blue-500 text-center">
+                    Sign in!
+                </Link>
+            </View>
+
         </View>
     );
 }
