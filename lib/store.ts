@@ -23,3 +23,4 @@ export const useUI = create<UIState>((set) => ({
     setExpenses: (vehicleId, items) => set((s) => ({...s.expensesByVehicle, [vehicleId]: items})),
 
 }))
+

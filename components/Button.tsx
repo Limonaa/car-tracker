@@ -11,7 +11,7 @@ type Props = {
 
 export default function Button({title, onPress, variant = "primary", size = "md", className}: Props) {
     const base = "rounded-2xl px-4 py-3 items-center"
-    const sizes = {sm: "px-3 py-2", md: "px-4 py-3", lg: "px-5 py-4"}
+    const sizes = {sm: "px-3 py-2", md: "px-4 py-3", lg: "px-5 py-4"}[size];
     const variants = {
         primary: "bg-brand active:bg-brand-dark",
         secondary: "bg-gray-100",
